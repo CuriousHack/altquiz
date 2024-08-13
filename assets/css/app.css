@@ -3,11 +3,7 @@
 
 html,body {
   font-family: 'montserrat', 'roboto';
-  /* background: #b9b3a9; */
-  /* display: flex; */
   justify-content: center;
-  /* margin: 0;
-  padding: 0; */
   background-color: #f4cffa;
 
 }
@@ -43,7 +39,7 @@ h1 {
   display: inline-block;
   width: 100%;
   padding: 10px 20px;
-  background-color: #428bca;
+  background-color: #FA2854;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -54,7 +50,7 @@ h1 {
 }
 
 .button:hover {
-  background-color: #3071a9;
+  background-color: #fa053a;
 }
 
 .result {
@@ -72,6 +68,101 @@ h1 {
   /* margin-top: 20px; */
 }
 #progress{
+    text-align: center;
+    padding: 10px 0px;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 35px;
+    margin: 60% auto;
+}
+.logo img{
+    width: 150px;
+    height: 150px;
+    margin: auto auto;
+    display: block;
+}
+.startquiz button{
+    display: block;
+    width: 80%;
+    margin: 40px auto;
+    padding: 10px 20px;
+    background-color: #FA2854;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    /* margin-right: 10px; */
+
+}
+
+ /* Popup container */
+ .timeout {
+    width: 80%;
+    padding: 20px;
+    margin: 50% auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Popup text */
+.timeout h4 {
+    margin-top: 0;
+}
+
+.timeout p {
+    margin: 15px 0;
+}
+
+/* Close button */
+.timeout button {
+    padding: 10px 20px;
+    background-color: #FA2854;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.timeout button:hover {
+    background-color: #FA053a;
+}
+
+.circular-progress{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: conic-gradient(#FA2854 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.circular-progress::before{
+    content: "";
+    position: absolute;
+    padding:8px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.progress-value{
+    position: relative;
+    font-size: 10px;
+    font-weight: 200;
+    color: #FA2854;
+}
+#timer{
     text-align: center;
     padding: 10px 0px;
 }

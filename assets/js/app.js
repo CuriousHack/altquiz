@@ -36,6 +36,11 @@ function getRandomItems(array, count) {
   const retryButton = document.getElementById('retry');
   const showAnswerButton = document.getElementById('showAnswer');
   const progressElement = document.getElementById('progress');
+  const timeout = document.getElementById('timeout');
+  const viewResult = document.getElementById('viewresult');
+  let circularProgress = document.querySelector(".circular-progress");
+  const progressValue = document.querySelector(".progress-value");
+
 
   
   let currentQuestion = 0;
@@ -52,6 +57,7 @@ function getRandomItems(array, count) {
   
   //function to display the questions
   function displayQuestion() {
+    timeout.style.display = 'none';
     const questionData = combinedArray[currentQuestion];
   
     const questionElement = document.createElement('div');
@@ -63,6 +69,7 @@ function getRandomItems(array, count) {
   
     const shuffledOptions = [...questionData.options];
     shuffleArray(shuffledOptions);
+    
   
     for (let i = 0; i < shuffledOptions.length; i++) {
       const option = document.createElement('label');
@@ -78,9 +85,10 @@ function getRandomItems(array, count) {
       option.appendChild(radio);
       option.appendChild(optionText);
       optionsElement.appendChild(option);
+
       
-    }
-    progressElement.innerHTML = `Question ${currentQuestion + 1} of ${combinedArray.length}`;
+      
+    }    
 
     //change the next button to submit button when the last question is reached
     if(currentQuestion + 1 == combinedArray.length){
@@ -89,6 +97,15 @@ function getRandomItems(array, count) {
     quizContainer.innerHTML = '';
     quizContainer.appendChild(questionElement);
     quizContainer.appendChild(optionsElement);
+
+
+    //show the progress bar
+    let progressStartValue = calculatePercentage(currentQuestion + 1, combinedArray.length);
+    circularProgress.style.background = `conic-gradient(#fa2854 ${progressStartValue * 3.6}deg, #ededed 0deg)`
+    progressValue.textContent = `${currentQuestion + 1}/${combinedArray.length}`;
+
+    startCountdown();
+    
   }
   
   //check if the selected option is correct and push incorrect answers to an array
@@ -120,6 +137,10 @@ function getRandomItems(array, count) {
     quizContainer.style.display = 'none';
     progressElement.style.display = 'none';
     submitButton.style.display = 'none';
+    timeout.style.display = 'none';
+    circularProgress.style.display = 'none';
+    document.getElementById('timer').style.display = 'none';
+
     retryButton.style.display = 'inline-block';
     showAnswerButton.style.display = 'inline-block';
     resultContainer.innerHTML = `You scored ${score} out of ${combinedArray.length}!`;
@@ -127,15 +148,7 @@ function getRandomItems(array, count) {
   
   //reset the quiz
   function retryQuiz() {
-    currentQuestion = 0;
-    score = 0;
-    incorrectAnswers = [];
-    quizContainer.style.display = 'block';
-    submitButton.style.display = 'inline-block';
-    retryButton.style.display = 'none';
-    showAnswerButton.style.display = 'none';
-    resultContainer.innerHTML = '';
-    displayQuestion();
+        window.location.href = '/index.html';
   }
   
   //show corrections for incorrect selections after completion of the quiz
@@ -163,12 +176,45 @@ function getRandomItems(array, count) {
     `;
   }
 
-//   function calculatePercentage(currentQuestion, totalQuestions){
-//     return (currentQuestion / totalQuestions) * 100;
-//   }
+  let timeRemaining = 3600; // 1 hour in seconds
+  let interval;
+
+  function startCountdown() {
+      interval = setInterval(function() {
+          let minutes = Math.floor(timeRemaining / 60);
+          let seconds = timeRemaining % 60;
+
+          // Format time as mm:ss
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          // Display the countdown
+          document.getElementById('timer').textContent = "time left: " + minutes + ":" + seconds;
+
+          // Decrease time remaining
+          if (--timeRemaining < 0) {
+              clearInterval(interval); // Stop the countdown when time is up
+              timeout.style.display = 'block';
+              quizContainer.style.display = 'none';
+                progressElement.style.display = 'none';
+                submitButton.style.display = 'none';
+                document.getElementById('timer').style.display = 'none';
+                circularProgress.style.display = 'none';
+                retryButton.style.display = 'none';
+                showAnswerButton.style.display = 'none';
+            //   displayResult();
+          }
+      }, 1000);
+  }
+
+
+  function calculatePercentage(currentQuestion, totalQuestions){
+    return (currentQuestion / totalQuestions) * 100;
+  }
   
   submitButton.addEventListener('click', checkAnswer);
   retryButton.addEventListener('click', retryQuiz);
   showAnswerButton.addEventListener('click', showAnswer);
+  viewResult.addEventListener('click', displayResult);
   
   displayQuestion();

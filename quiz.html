@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+    <script src="assets/js/app.js" type="module"></script>
+    <title>AltQuiz</title>
+</head>
+<body>
+    <div class="container">
+        <h1>AltQuiz</h1>
+        <div id="progress"></div>
+        <div class="circular-progress">
+            <span class="progress-value">0%</span>
+        </div>
+        <div id="timer">01:00:00</div>
+        <div id="quiz"></div>
+        <!-- timeout popup  -->
+        <div class="timeout" id="timeout">
+            <h4>Oops!</h4>
+            <p>Time is Up</p>
+            <button id="viewresult">View Result</button>
+        </div>
+        <div id="result" class="result"></div>
+        <button id="submit" class="button">Next</button>
+        <div class="submit-retry">
+            <button id="retry" class="button hide">Play Again</button>
+            <button id="showAnswer" class="button hide">Review</button>
+        </div>
+        
+        </div>
+</body>
+</html>
