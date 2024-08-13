@@ -1,0 +1,27 @@
+{
+    "name": "AltQuiz",
+    "short_name": "AlyQuiz",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "FA2854",
+    "theme_color": "FA2854",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "assets/images/favicon-16x16.png",
+        "type": "image/png", "sizes": "16x16"
+      },
+      {
+        "src": "assets/images/favicon-32x32.png",
+        "type": "image/png", "sizes": "32x32"
+      },
+      {
+        "src": "assets/images/android-chrome-192x192.png",
+        "type": "image/png","sizes": "192x192"
+      },
+      {
+        "src": "assets/images/android-chrome-512x512.png",
+        "type": "image/png", "sizes": "512x512"
+      }
+    ]
+  }
