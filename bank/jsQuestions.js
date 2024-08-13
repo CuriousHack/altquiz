@@ -1,5 +1,4 @@
-{
-    "JSQuestions" :[
+export const JSQuestions = [
         {
             "question": "What does the `typeof` operator do in JavaScript?",
             "options": ["Returns the type of a variable", "Checks if a variable is defined", "Converts a variable to a string", "Checks if a variable is an object"],
@@ -586,4 +585,3 @@
             "answer": "4"
         }
     ]
-}

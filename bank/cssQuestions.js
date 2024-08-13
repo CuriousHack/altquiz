@@ -1,5 +1,4 @@
-{
-"CSSQuestions" : [
+export const CSSQuestions = [
     {
         "question": "Which CSS property is used to change the background color of an element?",
         "options": ["background-color", "color", "background-image", "background"],
@@ -2166,4 +2165,3 @@
         "answer": "cursor"
     }
 ]
-}

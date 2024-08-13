@@ -1,5 +1,4 @@
-{
-    "htmlQuestions": [
+export const htmlQuestions = [
         {
             "question": "What does HTML stand for?",
             "options": [
@@ -646,4 +645,3 @@
             "answer": "charset"
         }
     ]
-}
