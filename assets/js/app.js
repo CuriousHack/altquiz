@@ -180,6 +180,7 @@ function getRandomItems(array, count) {
   let interval;
 
   function startCountdown() {
+    clearInterval(interval);
       interval = setInterval(function() {
           let minutes = Math.floor(timeRemaining / 60);
           let seconds = timeRemaining % 60;
@@ -223,7 +224,7 @@ function getRandomItems(array, count) {
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
         navigator.serviceWorker
-        .register("../serviceWorker.js")
+        .register("/serviceWorker.js")
         .then(res => console.log("service worker registered"))
         .catch(err => console.log("service worker not registered", err))
     })
